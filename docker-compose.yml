@@ -1,0 +1,20 @@
+version: "3"
+
+volumes:
+  myapp_logs:
+
+services:
+  producer_a:
+    build: ./producer_a
+    volumes:
+      - myapp_logs:/var/log/myapp:rw
+    
+  producer_b:
+    build: ./producer_b
+    volumes:
+      - myapp_logs:/var/log/myapp:rw
+
+  consumer:
+    build: ./consumer
+    volumes:
+      - myapp_logs:/var/log/myapp:ro

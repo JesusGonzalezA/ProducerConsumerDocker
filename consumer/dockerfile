@@ -1,0 +1,14 @@
+# Step 1: Choose the base image (you can use the same Python 3.11 image)
+FROM python:3.11
+
+# Step 2: Copy the consumer script into the image
+COPY consumer.sh /consumer.sh
+
+# Step 3: Set the working directory
+WORKDIR /
+
+# Step 4: Make the script executable
+RUN chmod +x /consumer.sh
+
+# Step 5: Define the entry point and command to run the script
+ENTRYPOINT ["/consumer.sh"]
